@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Normativo SENA</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <!-- LottieFiles Web Player CDN -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <!-- Enlace a tu archivo de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- New animated background with circles -->
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <!-- "DEMO" text with animation -->
+    <div class="demo-text">DEMO</div>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <img src="https://i.ibb.co/x87vZP6c/imagen-2025-07-04-114055915.png" alt="Logo SENA Centro de Gestión Administrativa">
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            </div>
+        <div class="chat-input">
+            <div class="profile-selector-container">
+                <label for="profileSelector">Soy:</label>
+                <select id="profileSelector">
+                    <option value="aprendiz">Aprendiz</option>
+                    <option value="instructor">Instructor</option>
+                    <option value="administrativo">Administrativo</option>
+                </select>
+            </div>
+            <div class="input-and-buttons">
+                <input type="text" id="userInput" placeholder="Escribe tu pregunta aquí...">
+                <button id="sendBtn">Enviar</button>
+                <button id="voiceBtn">Habilitar Voz</button>
+                <button id="generateCaseBtn">Generar Caso de Estudio ✨</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enlace a tu archivo de lógica JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
