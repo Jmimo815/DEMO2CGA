@@ -1,0 +1,377 @@
+/* Global styles for all elements */
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Exo', sans-serif; /* Applied Exo as global font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Keep overflow hidden for body to prevent scrollbars */
+    background: #333641; /* Background color from DEMO CSS, but Area will cover it */
+}
+
+/* Animated background styles from user's CSS, adapted for responsiveness */
+.area {
+    background: #ff8044;
+    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+    width: 100%;
+    height: 100vh;
+    position: fixed; /* Fixed to cover the entire viewport */
+    top: 0;
+    left: 0;
+    z-index: -2; /* Ensure it's behind the chat container */
+}
+
+.circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circles li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -30vmin; /* Responsive bottom offset */
+}
+
+/* Responsive sizing for circles using vmin */
+.circles li:nth-child(1) {
+    left: 25%;
+    width: 20vmin;
+    height: 20vmin;
+    animation-delay: 0s;
+}
+.circles li:nth-child(2) {
+    left: 10%;
+    width: 5vmin;
+    height: 5vmin;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+.circles li:nth-child(3) {
+    left: 70%;
+    width: 5vmin;
+    height: 5vmin;
+    animation-delay: 4s;
+}
+.circles li:nth-child(4) {
+    left: 40%;
+    width: 15vmin;
+    height: 15vmin;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+.circles li:nth-child(5) {
+    left: 65%;
+    width: 5vmin;
+    height: 5vmin;
+    animation-delay: 0s;
+}
+.circles li:nth-child(6) {
+    left: 75%;
+    width: 27.5vmin;
+    height: 27.5vmin;
+    animation-delay: 3s;
+}
+.circles li:nth-child(7) {
+    left: 35%;
+    width: 37.5vmin;
+    height: 37.5vmin;
+    animation-delay: 7s;
+}
+.circles li:nth-child(8) {
+    left: 50%;
+    width: 6.25vmin;
+    height: 6.25vmin;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+.circles li:nth-child(9) {
+    left: 20%;
+    width: 3.75vmin;
+    height: 3.75vmin;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+.circles li:nth-child(10) {
+    left: 85%;
+    width: 37.5vmin;
+    height: 37.5vmin;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(720deg); /* Responsive vertical movement */
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+/* Existing chat container styles, adjusted for new background */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    height: 90vh; /* Adjusted for better viewing on different screens */
+    background-color: rgba(76, 184, 182, 0.0275); /* Increased transparency by 45% */
+    backdrop-filter: blur(15px); /* Slightly increased blur for more effect */
+    -webkit-backdrop-filter: blur(15px); /* For Safari support */
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1; /* Ensure chat container is above the animated background */
+}
+.chat-header {
+    background-color: rgba(76, 184, 182, 0.275); /* Increased transparency by 45% */
+    color: #333; /* Dark text for contrast on white header */
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    display: flex; /* Use flexbox for centering the image */
+    flex-direction: column; /* Allow stacking of elements */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100px; /* Increased minimum height to prevent shrinking */
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+.chat-header img {
+    max-width: 90%; /* Make sure the image fits within the header */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 0.5rem; /* Rounded corners for the image */
+    margin-bottom: 0.5rem; /* Space between image and dropdown */
+}
+.profile-selector-container {
+    margin-top: 0.5rem;
+    width: 80%; /* Adjust width for better appearance */
+    text-align: center;
+    /* Flex properties for alignment within chat-input */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; /* Space between label and select */
+    padding-top: 0.5rem; /* Add some padding above */
+    padding-bottom: 0.5rem; /* Add some padding below */
+}
+.profile-selector-container label {
+    color: white; /* Changed to white for better contrast on dark footer */
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}
+.profile-selector-container select {
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid #4CB8B6; /* Updated to main background color */
+    background-color: rgba(76, 184, 182, 0.39); /* Increased transparency by 45% */
+    color: #333;
+    font-size: 0.9rem;
+    outline: none;
+}
+.chat-messages {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: rgba(76, 184, 182, 0.22); /* Increased transparency by 45% */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.message-container { /* New container for message and avatar */
+    display: flex;
+    align-items: flex-start; /* Align avatar and message content to the start */
+    gap: 0.5rem;
+    opacity: 0; /* Initial state for animation */
+    transform: translateY(20px); /* Initial state for animation */
+    animation: fadeInSlideUp 0.3s ease-out forwards; /* Animation */
+}
+/* Keyframe animation for messages */
+@keyframes fadeInSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.message {
+    max-width: 80%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    word-wrap: break-word;
+    background-color: rgba(76, 184, 182, 0.198); /* Increased transparency by 45% */
+    backdrop-filter: blur(5px); /* Applied blur to messages */
+    -webkit-backdrop-filter: blur(5px); /* For Safari support */
+}
+.user-message {
+    color: black; /* Changed to black font color */
+    align-self: flex-end;
+    border-bottom-right-radius: 0.25rem;
+    margin-left: auto; /* Push user message to the right */
+}
+.bot-message {
+    color: black; /* Changed to black font color */
+    border: 1px solid #4CB8B6; /* Updated to main background color */
+    border-bottom-left-radius: 0.25rem;
+}
+.bot-avatar { /* Styles for chatbot avatar */
+    width: 60px; /* Increased size by 50% from 40px */
+    height: 60px; /* Increased size by 50% from 40px */
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+.bot-content-wrapper { /* New container for message text and GIF */
+    display: flex;
+    flex-direction: column; /* Stack text and GIF */
+    align-items: flex-start; /* Align content to the left */
+    max-width: calc(80% - 60px - 0.5rem); /* Adjust max-width considering new avatar size and gap */
+}
+.bot-thinking-lottie { /* Styles for Lottie animation */
+    width: 30px; /* Adjust size as needed */
+    height: 30px;
+    margin-top: 5px; /* Space between message and animation */
+    border-radius: 0.25rem; /* Slightly rounded corners */
+    display: none; /* Hidden by default */
+}
+/* Styles for chapter buttons */
+.chapter-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    justify-content: center; /* Center buttons */
+}
+.chapter-button {
+    background-color: #3A9B99; /* Darker shade of main color */
+    color: white;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    flex: 1 1 auto; /* Allow buttons to grow and shrink */
+    min-width: 120px; /* Minimum width for buttons */
+    text-align: center;
+}
+.chapter-button:hover {
+    background-color: #5CD0CE; /* Lighter shade of main color for hover */
+}
+
+.chat-input {
+    display: flex;
+    flex-direction: column; /* Changed to column to stack input and buttons */
+    padding: 1rem;
+    border-top: 1px solid rgba(76, 184, 182, 0.275); /* Increased transparency by 45% */
+    background-color: rgba(76, 184, 182, 0.275); /* Increased transparency by 45% */
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    align-items: center; /* Align elements vertically */
+    gap: 0.75rem; /* Space between elements */
+    flex-shrink: 0; /* Prevent input area from shrinking */
+}
+.input-and-buttons { /* New wrapper for input and send/voice buttons */
+    display: flex;
+    width: 100%;
+    gap: 0.75rem;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    justify-content: center; /* Center buttons when wrapped */
+}
+.chat-input input {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #4CB8B6; /* Updated to main background color */
+    border-radius: 0.5rem;
+    outline: none;
+    font-size: 1rem;
+    min-width: 150px; /* Ensure input is not too small */
+}
+.chat-input button {
+    background-color: #3A9B99; /* Darker shade of main color */
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+.chat-input button:hover {
+    background-color: #5CD0CE; /* Lighter shade of main color for hover */
+}
+/* Styles for the voice button */
+#voiceBtn {
+    background-color: #3A9B99; /* Unified with other buttons */
+}
+#voiceBtn:hover {
+    background-color: #5CD0CE; /* Unified with other buttons */
+}
+/* Styles for the new LLM feature button */
+#generateCaseBtn {
+    background-color: #3A9B99; /* Unified with other buttons */
+}
+#generateCaseBtn:hover {
+    background-color: #5CD0CE; /* Unified with other buttons */
+}
+
+/* CSS for the "DEMO" text */
+.demo-text {
+    position: absolute;
+    top: 20px; /* Adjust as needed for spacing from top */
+    right: 20px; /* Adjust as needed for spacing from right */
+    color: #fff;
+    background: 50% 100%/50% 50% no-repeat radial-gradient(ellipse at bottom, #fff, transparent, transparent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 5vw; /* Responsive font size for DEMO */
+    font-family: "Source Sans Pro", sans-serif;
+    -webkit-animation: reveal 3000ms ease-in-out forwards 200ms, glow 2500ms linear infinite 2000ms;
+    animation: reveal 3000ms ease-in-out forwards 200ms, glow 2500ms linear infinite 2000ms;
+    z-index: 2; /* Ensure it's above the background and below the chatbot */
+}
+@-webkit-keyframes reveal {
+    80% {
+        letter-spacing: 8px;
+    }
+    100% {
+        background-size: 300% 300%;
+    }
+}
+@keyframes reveal {
+    80% {
+        letter-spacing: 8px;
+    }
+    100% {
+        background-size: 300% 300%;
+    }
+}
+@-webkit-keyframes glow {
+    40% {
+        text-shadow: 0 0 8px #fff;
+    }
+}
+@keyframes glow {
+    40% {
+        text-shadow: 0 0 8px #fff;
+    }
+}
